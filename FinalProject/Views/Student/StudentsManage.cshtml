@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FinalProject.Models.Student>
+
+@{
+    ViewBag.Title = "StudentsManage";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+<h2>StudentsManage</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colleges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.University)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Due)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GradeStatement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScholarshipsId)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colleges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.University)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Due)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GradeStatement)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ScholarshipsId)
+        </td>
+      
+        <td class="text-bg-dark">
+            @Html.ActionLink("Edit", "UpdateStudent", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

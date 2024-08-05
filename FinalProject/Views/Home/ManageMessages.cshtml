@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FinalProject.Models.Message>
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+<section>
+    <div class=container>
+        <h2 class="pb-4">Manage Messages</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.message)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfSend)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfSend)
+                    </td>
+                    <td class="text-bg-dark text-warning btn btn-warning">
+                        @Html.ActionLink("Delete", "DeleteMessage", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

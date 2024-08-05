@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="scholarshipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Applicants">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfGraduate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Percentage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recommendation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Join_Scholarship_Student" Relationship="Self.FK_Join_Scholarship_Student_Student_Info" FromRole="Applicants" ToRole="Join_Scholarship_Student" />
+  </EntityType>
+  <EntityType Name="Colleges">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateOfCreate" Type="DateTime" Precision="0" />
+    <Property Name="UniversityID" Type="Int32" />
+    <NavigationProperty Name="Universities" Relationship="Self.FK_Colleges_Colleges" FromRole="Colleges" ToRole="Universities" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Departments_Colleges" FromRole="Colleges" ToRole="Departments" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfCreate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RequiredLanguage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CollegeID" Type="Int32" Nullable="false" />
+    <Property Name="Constraint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Colleges" Relationship="Self.FK_Departments_Colleges" FromRole="Departments" ToRole="Colleges" />
+    <NavigationProperty Name="Join_Department_Scholarship" Relationship="Self.FK_Join_Department_Scholarship_Departments" FromRole="Departments" ToRole="Join_Department_Scholarship" />
+  </EntityType>
+  <EntityType Name="Join_Department_Scholarship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="ScholarshipID" Type="Int32" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Join_Department_Scholarship_Departments" FromRole="Join_Department_Scholarship" ToRole="Departments" />
+    <NavigationProperty Name="scholarships" Relationship="Self.FK_Join_Department_Scholarship_scholarship" FromRole="Join_Department_Scholarship" ToRole="scholarships" />
+  </EntityType>
+  <EntityType Name="Join_Scholarship_Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScholarshipID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" />
+    <NavigationProperty Name="Applicants" Relationship="Self.FK_Join_Scholarship_Student_Student_Info" FromRole="Join_Scholarship_Student" ToRole="Applicants" />
+    <NavigationProperty Name="scholarships" Relationship="Self.FK_Join_Scholarship_Student_scholarship" FromRole="Join_Scholarship_Student" ToRole="scholarships" />
+  </EntityType>
+  <EntityType Name="joinTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AcceptanceRate" Type="Double" Nullable="false" />
+    <Property Name="LanquageRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UniversityID" Type="Int32" />
+    <Property Name="SpecialtyID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Logins">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RememberME" Type="Boolean" />
+    <NavigationProperty Name="scholarship_student" Relationship="Self.FK_scholarship_student_Logins" FromRole="Logins" ToRole="scholarship_student" />
+  </EntityType>
+  <EntityType Name="scholarship_student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Financial_dues" Type="Double" Nullable="false" />
+    <Property Name="Grades" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Logins" Relationship="Self.FK_scholarship_student_Logins" FromRole="scholarship_student" ToRole="Logins" />
+  </EntityType>
+  <EntityType Name="scholarships">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfRegisterStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfRegisterEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Percentage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Constraint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdditionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Join_Department_Scholarship" Relationship="Self.FK_Join_Department_Scholarship_scholarship" FromRole="scholarships" ToRole="Join_Department_Scholarship" />
+    <NavigationProperty Name="Join_Scholarship_Student" Relationship="Self.FK_Join_Scholarship_Student_scholarship" FromRole="scholarships" ToRole="Join_Scholarship_Student" />
+  </EntityType>
+  <EntityType Name="StudentPages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudyYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Colleges" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Due" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GradeStatement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tessst">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Universities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfCreate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="WebLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="Int32" Nullable="false" />
+    <Property Name="AddetionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LanguageRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Colleges" Relationship="Self.FK_Colleges_Colleges" FromRole="Universities" ToRole="Colleges" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="subject" />
+      <PropertyRef Name="message" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="subject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Join_Scholarship_Student_Student_Info">
+    <End Role="Applicants" Type="Self.Applicants" Multiplicity="0..1" />
+    <End Role="Join_Scholarship_Student" Type="Self.Join_Scholarship_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Scholarship_Student">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Colleges_Colleges">
+    <End Role="Universities" Type="Self.Universities" Multiplicity="0..1" />
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Universities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Colleges">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departments_Colleges">
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="1" />
+    <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colleges">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Departments">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Department_Scholarship_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Join_Department_Scholarship" Type="Self.Join_Department_Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Department_Scholarship">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Department_Scholarship_scholarship">
+    <End Role="scholarships" Type="Self.scholarships" Multiplicity="0..1" />
+    <End Role="Join_Department_Scholarship" Type="Self.Join_Department_Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scholarships">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Department_Scholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Scholarship_Student_scholarship">
+    <End Role="scholarships" Type="Self.scholarships" Multiplicity="1" />
+    <End Role="Join_Scholarship_Student" Type="Self.Join_Scholarship_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scholarships">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Scholarship_Student">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_scholarship_student_Logins">
+    <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+    <End Role="scholarship_student" Type="Self.scholarship_student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="scholarship_student">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="scholarshipEntities7" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Applicants" EntityType="Self.Applicants" />
+    <EntitySet Name="Colleges" EntityType="Self.Colleges" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" />
+    <EntitySet Name="Join_Department_Scholarship" EntityType="Self.Join_Department_Scholarship" />
+    <EntitySet Name="Join_Scholarship_Student" EntityType="Self.Join_Scholarship_Student" />
+    <EntitySet Name="joinTable" EntityType="Self.joinTable" />
+    <EntitySet Name="Logins" EntityType="Self.Logins" />
+    <EntitySet Name="scholarship_student" EntityType="Self.scholarship_student" />
+    <EntitySet Name="scholarships" EntityType="Self.scholarships" />
+    <EntitySet Name="StudentPages" EntityType="Self.StudentPages" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tessst" EntityType="Self.tessst" />
+    <EntitySet Name="Universities" EntityType="Self.Universities" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" />
+    <AssociationSet Name="FK_Join_Scholarship_Student_Student_Info" Association="Self.FK_Join_Scholarship_Student_Student_Info">
+      <End Role="Applicants" EntitySet="Applicants" />
+      <End Role="Join_Scholarship_Student" EntitySet="Join_Scholarship_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Colleges_Colleges" Association="Self.FK_Colleges_Colleges">
+      <End Role="Universities" EntitySet="Universities" />
+      <End Role="Colleges" EntitySet="Colleges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departments_Colleges" Association="Self.FK_Departments_Colleges">
+      <End Role="Colleges" EntitySet="Colleges" />
+      <End Role="Departments" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Department_Scholarship_Departments" Association="Self.FK_Join_Department_Scholarship_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Join_Department_Scholarship" EntitySet="Join_Department_Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Department_Scholarship_scholarship" Association="Self.FK_Join_Department_Scholarship_scholarship">
+      <End Role="scholarships" EntitySet="scholarships" />
+      <End Role="Join_Department_Scholarship" EntitySet="Join_Department_Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Scholarship_Student_scholarship" Association="Self.FK_Join_Scholarship_Student_scholarship">
+      <End Role="scholarships" EntitySet="scholarships" />
+      <End Role="Join_Scholarship_Student" EntitySet="Join_Scholarship_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_scholarship_student_Logins" Association="Self.FK_scholarship_student_Logins">
+      <End Role="Logins" EntitySet="Logins" />
+      <End Role="scholarship_student" EntitySet="scholarship_student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

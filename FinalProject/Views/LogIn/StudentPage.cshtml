@@ -1,0 +1,67 @@
+﻿@model FinalProject.Models.Student
+
+@{
+    ViewBag.Title = "Studen Page";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+<br />
+<br />
+<br />
+
+@Html.ValidationSummary()
+
+<main id="main">
+
+    <br />
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="swiper-wrapper align-items-center">
+
+                            <div>
+                                <img src="~/assets/img/R.jpg" alt="">
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Student Info</h3>
+                        <ul>
+                            <li><strong>Full Name</strong>: @Model.FullName</li>
+                            <li><strong>Study Year</strong>: @Model.StudyYear</li>
+                            <li><strong>Department</strong>: @Model.Department</li>
+                            <li><strong>University</strong>: @Model.University</li>
+                            <li><strong>Due</strong>: @Model.Due</li>
+                        </ul>
+                    </div>
+
+                    <form method="post" role="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <p style="color:forestgreen">@ViewBag.Message</p>
+
+                            @Html.ValidationSummary()
+                            <strong>Grade Statement :</strong><input type="file" class="form-control" name="Grades" id="gradestatement" placeholder="Enter Your Grade Statement">
+                        </div>
+
+                        <div class="text-center pt-4"><button type="submit" class="btn btn-warning "> Save </button></div>
+
+                    </form>
+                    <br />
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->

@@ -1,0 +1,52 @@
+﻿
+<section id="Colleges" class="services">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Colleges</h2>
+            <p>Check Colleges that we provide</p>
+        </div>
+
+        <div class="row">
+            @{ if (ViewBag.University.Count >= 6)
+                {
+                    for (int university = 1; university <= 6; university++)
+                    {
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 " data-aos="zoom-in" data-aos-delay="200">
+                            <a href="/University/UniversityPage/@ViewBag.University[ViewBag.University.Count - university].ID">
+                                <div class="card ">
+                                    <img src="~/@ViewBag.University[ViewBag.University.Count - university].Image" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@ViewBag.University[ViewBag.University.Count - university].Name</h5>
+                                        <p class="card-text">@ViewBag.University[ViewBag.University.Count - university].Location</p>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+
+                else
+                {
+                    foreach (var university in @ViewBag.University)
+                    {
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 " data-aos="zoom-in" data-aos-delay="200">
+                        <a href="/University/UniversityPage/@university.ID">
+                            < div class="card ">
+                            <img src="~/@university.Image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@university.Name</h5>
+                                <p class="card-text">@university.Location</p>
+
+                            </div>
+                   
+                            </a>
+                        </div>
+                    }
+}
+            }
+        </div>
+
+    </div>
+  

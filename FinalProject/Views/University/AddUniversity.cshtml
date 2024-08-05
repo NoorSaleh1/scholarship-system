@@ -1,0 +1,64 @@
+﻿@model FinalProject.Models.University
+
+@{
+    ViewBag.Title = "AddUniversity";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+    <section>
+        <div class="container">
+            <div class="container">
+                <h2>AddUniversity</h2>
+                <div class="row mt-5">
+
+
+                    <div class="col-lg-8 mt-5 mt-lg-0">
+
+                        <form method="post" role="form" class="mvc" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="Name" class="form-control" id="name" placeholder="University Name" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="text" class="form-control" name="Location" placeholder="Location" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label class="label-default" for="start">Date of Create:</label>
+                                    <input type="date" class="form-control" name="DateOfCreate" id="start" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+
+                                    <input type="text" class="form-control" name="WebLink" placeholder="Web link" required>
+                                </div>
+                            </div>
+                            <div class="row mt-3 mt-md-0">
+
+                                <div class="col-md-6 form-group">
+                                    <label for="Image">University Image</label>
+                                    <input type="file" class="form-control" name="Image">
+                                </div>
+                            </div>
+                            <div class="row mt-3 mt-md-0">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" name="LanguageRequired" placeholder="Language Required">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <textarea class="form-control" name="AdditionalInfo" placeholder="AdditionalInfo"></textarea>
+                            </div>
+
+
+
+                            <p class="text-bg-danger">@Html.ValidationSummary()</p>
+                            <div class="text-center"><button type="submit" class="btn btn-warning">Add</button></div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>

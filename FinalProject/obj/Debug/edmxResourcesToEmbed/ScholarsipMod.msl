@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="scholarshipModelStoreContainer" CdmEntityContainer="scholarshipEntities2">
+    <EntitySetMapping Name="Colleges">
+      <EntityTypeMapping TypeName="scholarshipModel.College">
+        <MappingFragment StoreEntitySet="Colleges">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="dateOfCreate" ColumnName="dateOfCreate" />
+          <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="scholarshipModel.Department">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateOfCreate" ColumnName="DateOfCreate" />
+          <ScalarProperty Name="RequiredLanguage" ColumnName="RequiredLanguage" />
+          <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+          <ScalarProperty Name="Constraint" ColumnName="Constraint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Join_Department_Scholarship">
+      <EntityTypeMapping TypeName="scholarshipModel.Join_Department_Scholarship">
+        <MappingFragment StoreEntitySet="Join_Department_Scholarship">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Join_Scholarship_Student">
+      <EntityTypeMapping TypeName="scholarshipModel.Join_Scholarship_Student">
+        <MappingFragment StoreEntitySet="Join_Scholarship_Student">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="joinTables">
+      <EntityTypeMapping TypeName="scholarshipModel.joinTable">
+        <MappingFragment StoreEntitySet="joinTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AcceptanceRate" ColumnName="AcceptanceRate" />
+          <ScalarProperty Name="LanquageRequired" ColumnName="LanquageRequired" />
+          <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+          <ScalarProperty Name="SpecialtyID" ColumnName="SpecialtyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="scholarshipModel.Login">
+        <MappingFragment StoreEntitySet="Logins">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RememberME" ColumnName="RememberME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scholarships">
+      <EntityTypeMapping TypeName="scholarshipModel.scholarship">
+        <MappingFragment StoreEntitySet="scholarship">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateOfRegisterStart" ColumnName="DateOfRegisterStart" />
+          <ScalarProperty Name="DateOfRegisterEnd" ColumnName="DateOfRegisterEnd" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Constraint" ColumnName="Constraint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scholarship_student">
+      <EntityTypeMapping TypeName="scholarshipModel.scholarship_student">
+        <MappingFragment StoreEntitySet="scholarship_student">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Financial_dues" ColumnName="Financial dues" />
+          <ScalarProperty Name="Grades" ColumnName="Grades" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Info">
+      <EntityTypeMapping TypeName="scholarshipModel.Student_Info">
+        <MappingFragment StoreEntitySet="Student_Info">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Adsress" ColumnName="Adsress" />
+          <ScalarProperty Name="DateOfGraduate" ColumnName="DateOfGraduate" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="scholarshipModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tesssts">
+      <EntityTypeMapping TypeName="scholarshipModel.tessst">
+        <MappingFragment StoreEntitySet="tessst">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Universities">
+      <EntityTypeMapping TypeName="scholarshipModel.University">
+        <MappingFragment StoreEntitySet="Universities">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateOfCreate" ColumnName="DateOfCreate" />
+          <ScalarProperty Name="WebLink" ColumnName="WebLink" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddetionalInfo" ColumnName="AddetionalInfo" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="LanguageRequired" ColumnName="LanguageRequired" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact_Us">
+      <EntityTypeMapping TypeName="scholarshipModel.Contact_Us">
+        <MappingFragment StoreEntitySet="Contact_Us">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

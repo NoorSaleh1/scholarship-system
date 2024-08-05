@@ -1,0 +1,61 @@
+﻿@model FinalProject.Models.Admin
+
+@{
+    ViewBag.Title = "UpdateAdmin";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+    <section>
+        <div class="container">
+            <h2>UpdateAdmin</h2>
+            <div class="row mt-5">
+
+
+                <div class="col-lg-8 mt-5 mt-lg-0">
+
+                    <form method="post" role="form" class="mvc">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="Name" class="form-control" id="name" value="@Model.Name" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <label for="email">Email</label>
+
+                                <input type="email" class="form-control" name="Email" id="email" value="@ViewBag.email" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <label for="pass">password</label>
+
+                                <input type="text" class="form-control" name="Pass" id="pass" value="@ViewBag.Password" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="DOB">Date Of birth</label>
+                            <input type="date" class="form-control" name="DOB" id="DOB" value="@Model.DOB" placeholder="Date of birth" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="eng">Date Of engaged</label>
+
+                            <input type="text" class="form-control" name="DateOfEngaged" id="eng" value="@Model.DateOfEngaged">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="gen">Gender</label>
+
+                            <input type="text" name="Gender" class="form-control" id="gen" value="@Model.Gender" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="sal">Salary</label>
+
+                            <input type="number" name="Salary" class="form-control" id="sal" value="@Model.Salary" required>
+                        </div>
+
+                        <p class="text-bg-danger">@Html.ValidationSummary()</p>
+                        <div class="text-center "><button type="submit" class="btn btn-warning">Update</button></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>

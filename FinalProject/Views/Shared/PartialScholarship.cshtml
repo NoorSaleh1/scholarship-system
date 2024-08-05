@@ -1,0 +1,55 @@
+﻿
+<section id="scholarship" class="services">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Schoralship</h2>
+            <p>Check our Schoralship</p>
+        </div>
+
+        <div class="row pt-4">
+            @{
+                if (ViewBag.Scholar.Count >= 6)
+                {
+                    for (int Scholr = 1; Scholr <=6; Scholr++)
+                    {
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 " data-aos="zoom-in" data-aos-delay="200">
+                            <a  href="/Scholarship/IndividualPage/@ViewBag.Scholar[ViewBag.Scholar.Count - Scholr].ID">
+                            <div class="card ">
+                                <img src="~/assets/img/about.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@ViewBag.Scholar[ViewBag.Scholar.Count - Scholr].Name</h5>
+                                    <p class="card-text">@ViewBag.Scholar[ViewBag.Scholar.Count - Scholr].Percentage</p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    foreach (var Scholar in @ViewBag.Scholar)
+                    {
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 " data-aos="zoom-in" data-aos-delay="200">
+            <a href="/Scholarship/IndividualPage/@ViewBag.Scholar[ViewBag.Scholar.Count - Scholar].ID">
+
+                <div class="card ">
+                    <img src="~/assets/img/about.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Scholar.Name</h5>
+                        <p class="card-text">@Scholar.Percentage</p>
+                        <p class="card-text">@Scholar.AdditionalInfo</p>
+                    </div>
+                </div>
+                </a>
+        </div>
+                    }
+                }
+            }
+          
+        </div>
+    
+
+    </div>
+   
+@*@Html.ActionLink("More", "ScholarshipPage", "Scholarship")*@

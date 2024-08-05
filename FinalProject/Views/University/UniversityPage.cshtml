@@ -1,0 +1,72 @@
+﻿@model FinalProject.Models.University
+@{
+    ViewBag.Title = "UniversityPage";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+
+
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>@Model.Name</h2>
+               
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider ">
+                        <div class="s align-items-center">
+
+                            <div class="">
+                                <img src="~/@Model.Image" alt="">
+                            </div>
+
+                          
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>University information</h3>
+                        <ul>
+                            <li><strong>Location</strong>:@Model.Location</li>
+                            <li><strong>Date Of Create</strong>: @Model.DateOfCreate</li>
+                            <li><strong>Languages Required</strong>: @Model.LanguageRequired</li>
+                            <li><strong>Its website Link</strong>: <a href="@Model.WebLink" class="text-black">@Model.WebLink</a></li>
+                        </ul>
+                    </div>
+                </div>
+                        <div class="row">
+                        
+                        <p>
+                            @Model.AdditionalInfo,The university provides on-campus housing options for students, including dormitories and apartments. The cost of on-campus housing varies depending on the type of accommodation chosen. Additionally, the university offers an annual travel ticket to the home country for international students.
+
+                            Kocaeli University also provides privileges for high achievers, such as scholarships and awards. These are available to students who demonstrate exceptional academic performance and contribute to the university community through extracurricular activities and volunteer work.
+                        </p>
+                      </div>
+
+                        </div>
+                
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->

@@ -1,0 +1,33 @@
+﻿@model List<FinalProject.Models.University>
+@{
+    ViewBag.Title = "ScholarshipPage";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+    <section id="Colleges" class="services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Colleges</h2>
+                <p>Check Colleges that we provide</p>
+            </div>
+
+            <div class="row">
+                @foreach (var university in Model)
+                { 
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 " data-aos="zoom-in" data-aos-delay="200">
+                    <a href="/University/UniversityPage/@university.ID">
+                        <div class="card ">
+                            <img src="~/@university.Image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@university.Name</h5>
+                                <p class="card-text">@university.Location</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                   }
+            </div>
+            </div>
+        </section>

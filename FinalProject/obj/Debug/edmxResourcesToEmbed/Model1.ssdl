@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="scholarshipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applicants">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="DateOfGraduate" Type="date" Nullable="false" />
+    <Property Name="Percentage" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Recommendation" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Colleges">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateOfCreate" Type="date" />
+    <Property Name="UniversityID" Type="int" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfCreate" Type="date" Nullable="false" />
+    <Property Name="RequiredLanguage" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CollegeID" Type="int" Nullable="false" />
+    <Property Name="Constraint" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Join_Department_Scholarship">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="ScholarshipID" Type="int" />
+  </EntityType>
+  <EntityType Name="Join_Scholarship_Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScholarshipID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+  </EntityType>
+  <EntityType Name="joinTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcceptanceRate" Type="float" Nullable="false" />
+    <Property Name="LanquageRequired" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UniversityID" Type="int" />
+    <Property Name="SpecialtyID" Type="int" />
+  </EntityType>
+  <EntityType Name="Logins">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RememberME" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'scholarship.dbo.Messages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="subject" />
+      <PropertyRef Name="message" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="subject" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scholarship_student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Financial dues" Type="float" Nullable="false" />
+    <Property Name="Grades" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="scholarships">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfRegisterStart" Type="date" Nullable="false" />
+    <Property Name="DateOfRegisterEnd" Type="date" Nullable="false" />
+    <Property Name="Percentage" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Constraint" Type="nvarchar(max)" />
+    <Property Name="AdditionalInfo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="StudentPages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudyYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Colleges" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="University" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Due" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GradeStatement" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tessst">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Universities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfCreate" Type="date" Nullable="false" />
+    <Property Name="WebLink" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Country" Type="int" Nullable="false" />
+    <Property Name="AddetionalInfo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="LanguageRequired" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Colleges_Colleges">
+    <End Role="Universities" Type="Self.Universities" Multiplicity="0..1" />
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Universities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Colleges">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departments_Colleges">
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="1" />
+    <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colleges">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Departments">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Department_Scholarship_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Join_Department_Scholarship" Type="Self.Join_Department_Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Department_Scholarship">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Department_Scholarship_scholarship">
+    <End Role="scholarships" Type="Self.scholarships" Multiplicity="0..1" />
+    <End Role="Join_Department_Scholarship" Type="Self.Join_Department_Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scholarships">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Department_Scholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Scholarship_Student_scholarship">
+    <End Role="scholarships" Type="Self.scholarships" Multiplicity="1" />
+    <End Role="Join_Scholarship_Student" Type="Self.Join_Scholarship_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="scholarships">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Scholarship_Student">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Join_Scholarship_Student_Student_Info">
+    <End Role="Applicants" Type="Self.Applicants" Multiplicity="0..1" />
+    <End Role="Join_Scholarship_Student" Type="Self.Join_Scholarship_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Join_Scholarship_Student">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_scholarship_student_Logins">
+    <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+    <End Role="scholarship_student" Type="Self.scholarship_student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="scholarship_student">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="scholarshipModelStoreContainer">
+    <EntitySet Name="Applicants" EntityType="Self.Applicants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Colleges" EntityType="Self.Colleges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Join_Department_Scholarship" EntityType="Self.Join_Department_Scholarship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Join_Scholarship_Student" EntityType="Self.Join_Scholarship_Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="joinTable" EntityType="Self.joinTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="scholarship_student" EntityType="Self.scholarship_student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="scholarships" EntityType="Self.scholarships" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentPages" EntityType="Self.StudentPages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tessst" EntityType="Self.tessst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Universities" EntityType="Self.Universities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Messages].[ID] AS [ID], 
+    [Messages].[name] AS [name], 
+    [Messages].[email] AS [email], 
+    [Messages].[subject] AS [subject], 
+    [Messages].[message] AS [message]
+    FROM [dbo].[Messages] AS [Messages]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Colleges_Colleges" Association="Self.FK_Colleges_Colleges">
+      <End Role="Universities" EntitySet="Universities" />
+      <End Role="Colleges" EntitySet="Colleges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departments_Colleges" Association="Self.FK_Departments_Colleges">
+      <End Role="Colleges" EntitySet="Colleges" />
+      <End Role="Departments" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Department_Scholarship_Departments" Association="Self.FK_Join_Department_Scholarship_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Join_Department_Scholarship" EntitySet="Join_Department_Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Department_Scholarship_scholarship" Association="Self.FK_Join_Department_Scholarship_scholarship">
+      <End Role="scholarships" EntitySet="scholarships" />
+      <End Role="Join_Department_Scholarship" EntitySet="Join_Department_Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Scholarship_Student_scholarship" Association="Self.FK_Join_Scholarship_Student_scholarship">
+      <End Role="scholarships" EntitySet="scholarships" />
+      <End Role="Join_Scholarship_Student" EntitySet="Join_Scholarship_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Join_Scholarship_Student_Student_Info" Association="Self.FK_Join_Scholarship_Student_Student_Info">
+      <End Role="Applicants" EntitySet="Applicants" />
+      <End Role="Join_Scholarship_Student" EntitySet="Join_Scholarship_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_scholarship_student_Logins" Association="Self.FK_scholarship_student_Logins">
+      <End Role="Logins" EntitySet="Logins" />
+      <End Role="scholarship_student" EntitySet="scholarship_student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

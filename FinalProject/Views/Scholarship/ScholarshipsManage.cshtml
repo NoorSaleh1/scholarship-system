@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalProject.Models.scholarship>
+
+@{
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+    ViewBag.Title = "Scholarships";
+    
+}
+
+
+    <section>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <div class="container">
+            <h2 class="pb-4">ScholarshipsManage</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfRegisterStart)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfRegisterEnd)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Percentage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Constraint)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdditionalInfo)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfRegisterStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfRegisterEnd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Percentage)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Constraint)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdditionalInfo)
+                        </td>
+                        <td class="text-bg-dark text-warning">
+                            @Html.ActionLink("Edit", "UpdateScholarship", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "IndividualPage", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "DeleteScholarship", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </section>

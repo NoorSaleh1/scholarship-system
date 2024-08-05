@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c223088dcaf4cae8bff44ca4b486026" Name="Diagram1">
+        <EntityTypeShape EntityType="scholarshipModel.College" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Department" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Join_Department_Scholarship" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Join_Scholarship_Student" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.joinTable" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Login" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.scholarship" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.scholarship_student" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Student_Info" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.tessst" Width="1.5" PointX="4.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.University" Width="1.5" PointX="1.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="scholarshipModel.Contact" Width="1.5" PointX="6.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="scholarshipModel.FK_Colleges_Colleges" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_Departments_Colleges" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_Join_Department_Scholarship_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_Join_Department_Scholarship_scholarship" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_Join_Scholarship_Student_scholarship" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_Join_Scholarship_Student_Student_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="scholarshipModel.FK_scholarship_student_Logins" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
